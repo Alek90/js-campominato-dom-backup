@@ -14,7 +14,6 @@
 
 // Variabili DOM:
 const startButton = document.getElementById("start");
-let difficultLevel = document.getElementById("choice_difficult").value;
 
 //inizializziamo una variabile per le celle:
 let cell = "";
@@ -32,6 +31,7 @@ startButton.addEventListener("click", function(){
     grid.innerHTML = "";
 
     //Prendiamo in considerazione le selezioni dell'utente:
+    let difficultLevel = document.getElementById("choice_difficult").value;
     
     console.log(difficultLevel);
 
@@ -90,25 +90,27 @@ startButton.addEventListener("click", function(){
 
     
     
-    function choiceLoserCell (totalCell) {
-
-        let bombs = [];
-
-        while (bombs.length < 16) {
-
-            let positionBombs = extractPositionBombs(1, totalCell)
     
-            if(!bombs.includes(positionBombs)){
-                bombs.push(positionBombs)
-            }
-        }
-
-        return bombs
-    }
 })
 
 
 
 function extractPositionBombs(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+function choiceLoserCell (totalCell) {
+
+    let bombs = [];
+
+    while (bombs.length < 16) {
+
+        let positionBombs = extractPositionBombs(1, totalCell)
+
+        if(!bombs.includes(positionBombs)){
+            bombs.push(positionBombs)
+        }
+    }
+
+    return bombs
 }
